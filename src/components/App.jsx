@@ -23,6 +23,7 @@
 import EditEventPage from 'pages/EditEventPage';
 import EventDetailPage from 'pages/EventDetailPage';
 import EventsPage from 'pages/EventsPage';
+import EventsRoot from 'pages/EventsRoot';
 import HomePage from 'pages/HomePage';
 import NewEventPage from 'pages/NewEventPage';
 import RootLayout from 'pages/RootLayout';
@@ -34,14 +35,32 @@ export default function App() {
       path: '/',
       element: <RootLayout />,
       children: [
-        {path: '/', element: <HomePage />},
-        { path: '/events', element: <EventsPage /> },
-        { path: '/events/:eventId', element: <EventDetailPage /> },
-        { path: '/events/new', element: <NewEventPage /> },
-        { path: '/events/:eventId/edit', element: <EditEventPage /> },
+        { index: true, element: <HomePage /> },
+        {
+          path: 'events',
+          element: <EventsRoot />,
+          children: [
+            {
+              index: true,
+              element: <EventsPage />,
+              loader: async () => {
+                const response = await fetch('http://localhost:8080/events');
+                if (!response.ok) {
+                  //...
+                } else {
+                  const resData = await response.json();
+                  return resData.events
+                }
+              },
+            },
+            { path: ':eventId', element: <EventDetailPage /> },
+            { path: 'new', element: <NewEventPage /> },
+            { path: ':eventId/edit', element: <EditEventPage /> },
+          ],
+        },
       ],
     },
   ]);
 
-  return <RouterProvider router={router} />
+  return <RouterProvider router={router} />;
 }
