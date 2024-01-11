@@ -21,6 +21,7 @@
 // BONUS: Add another (nested) layout route that adds the <EventNavigation> component above all /events... page components
 
 import EditEventPage from 'pages/EditEventPage';
+import ErrorPage from 'pages/ErrorPage';
 import EventDetailPage from 'pages/EventDetailPage';
 import EventsPage, { loader as eventsLoader } from 'pages/EventsPage';
 import EventsRoot from 'pages/EventsRoot';
@@ -34,6 +35,7 @@ export default function App() {
     {
       path: '/',
       element: <RootLayout />,
+      errorElement: <ErrorPage />,
       children: [
         { index: true, element: <HomePage /> },
         {
