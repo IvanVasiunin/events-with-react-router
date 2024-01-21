@@ -22,7 +22,9 @@
 
 import EditEventPage from 'pages/EditEventPage';
 import ErrorPage from 'pages/ErrorPage';
-import EventDetailPage from 'pages/EventDetailPage';
+import EventDetailPage, {
+  loader as eventDatailLoader,
+} from 'pages/EventDetailPage';
 import EventsPage, { loader as eventsLoader } from 'pages/EventsPage';
 import EventsRoot from 'pages/EventsRoot';
 import HomePage from 'pages/HomePage';
@@ -47,7 +49,11 @@ export default function App() {
               element: <EventsPage />,
               loader: eventsLoader,
             },
-            { path: ':eventId', element: <EventDetailPage /> },
+            {
+              path: ':eventId',
+              element: <EventDetailPage />,
+              loader: eventDatailLoader,
+            },
             { path: 'new', element: <NewEventPage /> },
             { path: ':eventId/edit', element: <EditEventPage /> },
           ],
