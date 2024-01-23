@@ -2,6 +2,7 @@ import EditEventPage from 'pages/EditEventPage';
 import ErrorPage from 'pages/ErrorPage';
 import EventDetailPage, {
   loader as eventDatailLoader,
+  action as deleteEventAction,
 } from 'pages/EventDetailPage';
 import EventsPage, { loader as eventsLoader } from 'pages/EventsPage';
 import EventsRoot from 'pages/EventsRoot';
@@ -35,6 +36,7 @@ export default function App() {
                 {
                   index: true,
                   element: <EventDetailPage />,
+                  action: deleteEventAction,
                 },
                 { path: 'edit', element: <EditEventPage /> },
               ],
