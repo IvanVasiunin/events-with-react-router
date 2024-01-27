@@ -17,7 +17,10 @@ This project was created with
 
 In order to run the project:
 - Clone the project to your computer
-- Install all dependencies with: <code>npm install</code>
+- Enter the backend folder using the <code>cd backend</code> command
+- Install dependencies with: <code>npm install</code>
+- To start backend, use the command: <code>npm start</code>
+- In main folder install all dependencies with: <code>npm install</code>
 - To start your project, use the command: <code>npm start</code>
 
 ## Stack and Tools
